@@ -1,0 +1,26 @@
+{
+  "name": "aralan",
+  "version": "1.0.0",
+  "description": "Some tools for schools at home",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ./scripts/build.js",
+    "test": "echo 'Tests are coming soon'",
+    "start": "node ./scripts/dev-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asartalo/aralan.git"
+  },
+  "author": "Wayne Duran",
+  "license": "GPLV3",
+  "bugs": {
+    "url": "https://github.com/asartalo/aralan/issues"
+  },
+  "homepage": "https://github.com/asartalo/aralan#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "ncp": "^2.0.0"
+  }
+}
