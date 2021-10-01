@@ -70,7 +70,7 @@
     <main class="row">
       <div class="column" style="margin-top: 4em">
         <h2>Today’s Schedule</h2>
-        <h3>Tuesday, September 28, 2021</h3>
+        <h3 id="date-today">Tuesday, September 28, 2021</h3>
         <ul class="nolist">
           <li>
             <label>
@@ -113,6 +113,28 @@
       </div>
     </main>
   </div>
+  <script>
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    const days = [
+      'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
+    ];
+    const now = new Date();
+    const dateTodayEl = document.querySelector('#date-today');
+    dateTodayEl.textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+  </script>
 
   <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
