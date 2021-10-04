@@ -72,28 +72,34 @@
         <h2>Today’s Schedule</h2>
         <h3 id="date-today">Tuesday, September 28, 2021</h3>
         <ul class="nolist">
+          <li id="flag-ceremony-activity" style="display: none;">
+            <label>
+              <input type="checkbox" value="flag-ceremony" />
+              Flag Ceremony
+            </label>
+          </li>
           <li>
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" value="exercise" />
               Exercise
             </label>
           </li>
           <li>
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" value="reading" />
               Reading
             </label>
           </li>
           <li>
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" value="worksheet" />
               Worksheet
             </label>
           </li>
           <!--
           <li>
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" value="pe" />
               Physical Education (P.E.)
             </label>
           </li>-->
@@ -132,9 +138,15 @@
     const days = [
       'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
     ];
+
+    const find = (selector) => document.querySelector(selector);
     const now = new Date();
-    const dateTodayEl = document.querySelector('#date-today');
+    const dateTodayEl = find('#date-today');
     dateTodayEl.textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+    if (now.getDay() === 1) {
+      const flagCeremony = find('#flag-ceremony-activity');
+      flagCeremony.style.display = '';
+    }
   </script>
 
   <!-- End Document
