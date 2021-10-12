@@ -21,6 +21,7 @@
   "homepage": "https://github.com/asartalo/aralan#readme",
   "devDependencies": {
     "express": "^4.17.1",
+    "livereload": "^0.9.3",
     "ncp": "^2.0.0"
   }
 }

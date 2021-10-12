@@ -55,6 +55,12 @@
       font-weight: normal;
     }
   </style>
+  <script>
+    if (location.host.match(/^localhost/) || location.host.match(/^127\.0\.0\.1/)) {
+      document.write('<script src="//' + (location.host || 'localhost').split(':')[0] +
+        ':35729/livereload.js?snipver=1"></' + 'script>')
+    }
+  </script>
 </head>
 
 <body>
@@ -70,7 +76,7 @@
     <main class="row">
       <div class="column" style="margin-top: 4em">
         <h2>Today’s Schedule</h2>
-        <h3 id="date-today">Tuesday, September 28, 2021</h3>
+        <h3><span id="date-today">Tuesday, September 28, 2021</span> <span id="clock"></span></h3>
         <ul class="nolist">
           <li id="flag-ceremony-activity" style="display: none;">
             <label>
@@ -93,7 +99,7 @@
           <!--
           <li>
             <label>
-              <input type="checkbox" value="reading" />
+              <input type="checkbox" value="khan-academy" />
               Khan Academy
             </label>
           </li>
@@ -155,6 +161,19 @@
       const flagCeremony = find('#flag-ceremony-activity');
       flagCeremony.style.display = '';
     }
+
+    const clockEl = find('#clock');
+    function tickTock() {
+      const now = new Date();
+      clockEl.textContent = now.toLocaleTimeString();
+      setTimeout(tickTock, 1000);
+    }
+
+    function zeroPad(num) {
+      return num < 10 ? `0${num}` : num.toString();
+    }
+
+    document.addEventListener('DOMContentLoaded', tickTock);
   </script>
 
   <!-- End Document
