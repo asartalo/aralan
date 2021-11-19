@@ -89,7 +89,9 @@
               <div class="seconds"></div>
             </div>
           </div>
-          <p id="clock"></p>
+          <p id="clock">
+            <span class="hours"></span>:<span class="minutes"></span>:<span class="seconds"></span>
+          </p>
         </div>
         <ul class="nolist">
           <li id="flag-ceremony-activity" style="display: none;">
@@ -172,7 +174,12 @@
       'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
     ];
 
-    const find = (selector) => document.querySelector(selector);
+    /**
+     * @param {string} selector
+     */
+    function find(selector) {
+      return document.querySelector(selector);
+    }
     const now = new Date();
     const dateTodayEl = find('#date-today');
     dateTodayEl.textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
@@ -182,9 +189,16 @@
     }
 
     const clockEl = find('#clock');
+    const clockHours = find('#clock .hours');
+    const clockMinutes = find('#clock .minutes');
+    const clockSeconds = find('#clock .seconds');
     function tickTock() {
       const now = new Date();
-      clockEl.textContent = now.toLocaleTimeString();
+      // clockEl.textContent = now.toLocaleTimeString();
+      const hours = now.getHours() % 12;
+      clockHours.textContent = hours === 0 ? '12' : hours.toString();
+      clockMinutes.textContent = zeroPad(now.getMinutes());
+      clockSeconds.textContent = zeroPad(now.getSeconds());
       tickAnalogClock(now);
       setTimeout(tickTock, 1000);
     }

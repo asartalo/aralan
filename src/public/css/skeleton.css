@@ -498,8 +498,9 @@ there.
   left: 0;
 }
 
-.hours {
-  background: #000;
+.clock .hours {
+  /* background: #000; */
+  background: darkblue;
   height: 20%;
   left: 49%;
   position: absolute;
@@ -509,8 +510,9 @@ there.
   border-radius: 85%/10%;
 }
 
-.minutes {
-  background: #000;
+.clock .minutes {
+  /* background: #000; */
+  background: green;
   height: 35%;
   left: 49%;
   position: absolute;
@@ -520,7 +522,7 @@ there.
   border-radius: 150%/10%;
 }
 
-.seconds {
+.clock .seconds {
   background: red;
   height: 30%;
   left: 49.5%;
@@ -538,14 +540,27 @@ there.
   }
 }
 
-.hours {
+.clock .hours {
   /* animation: rotate 43200s infinite linear; */
   transition: transform 0.3s cubic-bezier(.4,2.08,.55,.44);
 }
-.minutes {
+.clock .minutes {
   transition: transform 0.3s cubic-bezier(.4,2.08,.55,.44);
 }
-.seconds {
+.clock .seconds {
   transition: transform 0.2s cubic-bezier(.4,2.08,.55,.44);
   z-index: 1;
+}
+
+#clock .hours {
+  color: darkblue;
+}
+
+#clock .minutes {
+  color: green;
+}
+
+#clock .seconds {
+  color: red;
+  font-size: 0.8em;
 }
