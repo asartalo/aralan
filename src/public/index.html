@@ -106,12 +106,12 @@
               Exercise
             </label>
           </li>
-          <!-- <li>
+          <li>
             <label>
-              <input type="checkbox" value="worksheet" />
-              Worksheet
+              <input type="checkbox" value="worksheets" />
+              Worksheets
             </label>
-          </li> -->
+          </li>
           <!--
           <li>
             <label>
@@ -125,12 +125,12 @@
               Khan Academy Kids
             </label>
           </li>
-          <li>
+          <!-- <li>
             <label>
               <input type="checkbox" value="science-experiment" />
               Science Experiment
             </label>
-          </li>
+          </li> -->
           <li>
             <label>
               <input type="checkbox" value="reading" />
@@ -195,7 +195,16 @@
     }
     const now = new Date();
     const dateTodayEl = find('#date-today');
-    dateTodayEl.textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+    const dateNumber = now.getDate();
+
+    const dateDay = parseFloat(window.localStorage.getItem('dateDay'));
+    if (!isNaN(dateDay)) {
+      if (dateNumber !== dateDay) {
+        window.location.reload();
+      }
+    }
+    window.localStorage.setItem('dateDay', dateNumber.toString());
+    dateTodayEl.textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${dateNumber}, ${now.getFullYear()}`;
     if (now.getDay() === 1) {
       const flagCeremony = find('#flag-ceremony-activity');
       flagCeremony.style.display = '';
@@ -205,6 +214,7 @@
     const clockHours = find('#clock .hours');
     const clockMinutes = find('#clock .minutes');
     const clockSeconds = find('#clock .seconds');
+
     function tickTock() {
       const now = new Date();
       // clockEl.textContent = now.toLocaleTimeString();
